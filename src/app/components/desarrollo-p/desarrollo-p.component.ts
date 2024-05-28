@@ -13,7 +13,15 @@ export class DesarrolloPComponent implements OnInit {
   }
 
   listaTarjetas: any[] =[
+    {titular: 'Juan Perez', numeroTarjeta:'12233', fechaExpiracion:'11/23', cvv:'123'},
+    {titular: 'Juan Perez', numeroTarjeta:'12233', fechaExpiracion:'11/23', cvv:'123'},
     {titular: 'Juan Perez', numeroTarjeta:'12233', fechaExpiracion:'11/23', cvv:'123'}
   ];
+
+  editarTarjeta(tarjeta : any) //traer la informacion al frm para editar
+  {}
+
+  eliminarTarjeta(tarjeta : any) //traer la informacion al frm para editar
+  {}
 
 }
