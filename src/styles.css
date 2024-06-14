@@ -11,3 +11,10 @@ background: linear-gradient(to right, #493240, #FF0099); /* W3C, IE 10+/ Edge, F
     font-weight: 400;
     font-style: normal;
 }
+
+.img_titular{
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+
+}

@@ -14,19 +14,68 @@
     </div>
 </div>
 <div class="row mt-4"><div class="col-lg-6">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="titulo">{{accion |uppercase}}</h5>
+                <form [formGroup]="formPersona" (ngSubmit)="enviarFormulario();" action="">
+
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-user-plus" 
+                                [class.green-icon]="this.formPersona.get('PersonaId')?.valid"
+                                [class.red-icon]="this.formPersona.get('PersonaId')?.invalid && this.formPersona.get('PersonaId')?.touched"></i>
+                        </span>
+                        <input formControlName="PersonaId" minlength="1" maxlength="50" type="number" class="form-control" placeholder="PersonaId">
+                      </div>
+                    
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-user-plus" 
+                                [class.green-icon]="this.formPersona.get('Nombre')?.valid"
+                                [class.red-icon]="this.formPersona.get('Nombre')?.invalid && this.formPersona.get('Nombre')?.touched"></i>
+                        </span>
+                        <input formControlName="Nombre" minlength="3" maxlength="50" type="text" class="form-control" placeholder="Nombre">
+                      </div>
+
+                      <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-user-plus"
+                            [class.green-icon]="this.formPersona.get('Apellido')?.valid"
+                            [class.red-icon]="this.formPersona.get('Apellido')?.invalid && this.formPersona.get('Apellido')?.touched"></i>
+                        </span>
+                        <input formControlName="Apellido" minlength="3" maxlength="65" type="text" class="form-control" placeholder="Apellido">
+                      </div>
+
+                      <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-user-plus" 
+                                [class.green-icon]="this.formPersona.get('CorreoElectronico')?.valid"
+                                [class.red-icon]="this.formPersona.get('CorreoElectronico')?.invalid && this.formPersona.get('CorreoElectronico')?.touched"></i>
+                        </span>
+                        <input formControlName="CorreoElectronico" minlength="3" maxlength="50" type="text" class="form-control" placeholder="Correo Electronico">
+                      </div>
+                      <button [disabled]="this.formPersona.invalid" type="submit" class="btn btn-success btn-lg">
+                        <i class="fa-solid fa-database"></i>&nbsp; {{accion |uppercase}}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
     <div class="card">
         <div class="card-body">
-            <h5 class="titulo">List Tarjeta</h5>
+            <h5 class="titulo">Lista Persona</h5>
             <table class="table">
                 <tbody>
-                    <tr *ngFor="let tarjeta of listaTarjetas; let i = index ">
-                        <td>{{tarjeta.titular}}</td>
-                        <td>{{tarjeta.numeroTarjeta}}</td>
-                        <td>{{tarjeta.fechaExp}}</td>                              
-                        <td><img src="../../images/im.jpg"></td>
-                       
-                        <td><i (click)="editarTarjeta(tarjeta);" class="far fa-solid fa-pencil text-info"></i></td>
-                        <td><i (click)="eliminarTarjeta(tarjeta.idTarjeta);" class="far fa-solid fa-trash-can text-danger"></i></td>
+                    <tr *ngFor="let persona of listaPersonas; let i = index ">
+                        <td>{{persona.personaId}}</td>
+                        <td>{{persona.nombre}}</td>
+                        <td>{{persona.apellido}}</td>    
+                        <td>{{persona.correoElectronico}}</td>                            
+                        
+                        <td><i (click)="eliminarPersona(persona.personaId);" class="far fa-solid fa-trash-can text-danger"></i></td>
+                        <td><i (click)="editarPersona(persona);" class="fa-solid fa-pen"></i></td>
+                        
                     </tr>
                 </tbody>
             </table>
